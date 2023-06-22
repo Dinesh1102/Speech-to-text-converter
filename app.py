@@ -15,21 +15,16 @@ with gr.Blocks() as demo:
     """)
     with gr.Tab("Audio File"):
         with gr.Row().style(equal_height=True):
-            audio_input1 = gr.Audio(label="Audio File", type="filepath")
-            text_output1 = gr.Textbox(label="Transcribed text", show_label=True)
-        file_button = gr.Button("Transcribe")
+            audio1 = gr.Audio(label="Audio File", type="filepath")
+            text1 = gr.Textbox(label="Transcribed text", show_label=True)
+        file_button = gr.Button("Run")
     with gr.Tab("Record"):
         with gr.Row().style(equal_height=True):
-            audio_input2 = gr.Audio(label="Input Audio", source="microphone", type="filepath")
-            text_output2 = gr.Textbox(label="Transcribed text", show_label=True)
+            audio2 = gr.Audio(label="Input Audio", source="microphone", type="filepath")
+            text2 = gr.Textbox(label="Transcribed text", show_label=True)
         rec_button = gr.Button("Run")
-    gr.HTML('''
-        <div class="footer">
-            <p>Model by <a href="https://github.com/openai/whisper" style="text-decoration: underline;" target="_blank">OpenAI</a></p>
-        </div>
-        ''')
-
-    file_button.click(speech, inputs=audio_input1, outputs=text_output1)
-    rec_button.click(speech, inputs=audio_input2, outputs=text_output2)
+    
+    file_button.click(speech, inputs=audio1, outputs=text1)
+    rec_button.click(speech, inputs=audio2, outputs=text2)
 
 demo.launch()
